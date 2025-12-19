@@ -1,342 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yan Cauê | Front-End Developer</title>
-  
-  <meta name="description" content="Portfólio de Yan Cauê, Front-End Developer especializado em React, Next.js e TypeScript.">
-  <meta name="keywords" content="Yan Cauê, Front-End, Developer, React, Next.js, Portfolio, Web Design">
-  <meta name="author" content="Yan Cauê">
-  
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.yancaue.me/">
-  <meta property="og:title" content="Yan Cauê | Front-End Developer">
-  <meta property="og:description" content="Transformando ideias em experiências digitais com React, Next.js e Design Moderno.">
-  <meta property="og:image" content="https://avatars.githubusercontent.com/u/127339610?v=4">
-
-  <link rel="icon" href="image/favicon.png" type="image/png">
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yan Cauê | Nexus Hub</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div class="cyber-grid-bg"></div>
-  <div class="vignette"></div>
+    <div class="cyber-grid-bg"></div>
+    <div class="vignette"></div>
 
-  <nav>
-    <div class="container nav-content">
-      <a href="#" class="logo">Yan Cauê</a>
-      <div class="nav-links">
-        <a href="#about" class="nav-link active" data-translate="nav.about">Sobre</a>
-        <a href="#skills" class="nav-link" data-translate="nav.skills">Habilidades</a>
-        <a href="#education" class="nav-link" data-translate="nav.education">Educação</a>
-        <a href="#experience" class="nav-link" data-translate="nav.experience">Experiência</a>
-        <a href="#projects" class="nav-link" data-translate="nav.projects">Projetos</a>
-        <a href="#contact" class="nav-link" data-translate="nav.contact">Contato</a>
-      </div>
-      <div class="nav-actions">
-        <div class="lang-switcher">
-          <button class="lang-btn" id="lang-switcher-btn" aria-label="Alterar Idioma">
-            <img src="https://flagcdn.com/w40/br.png" id="current-flag" alt="Bandeira Brasil" style="width: 24px; height: auto; border-radius: 2px;">
-            <i class="fas fa-chevron-down" style="font-size: 0.8rem; margin-left: 8px;"></i>
-          </button>
-          
-          <div class="lang-dropdown" id="lang-dropdown">
-            <a href="#" class="lang-option" data-lang="pt">
-              <img src="https://flagcdn.com/w40/br.png" alt="Brasil" style="width: 24px; vertical-align: middle;">
-            </a>
-            <a href="#" class="lang-option" data-lang="en">
-              <img src="https://flagcdn.com/w40/us.png" alt="USA" style="width: 24px; vertical-align: middle;">
-            </a>
-            <a href="#" class="lang-option" data-lang="jp">
-              <img src="https://flagcdn.com/w40/jp.png" alt="Japan" style="width: 24px; vertical-align: middle;">
-            </a>
-            <a href="#" class="lang-option" data-lang="zh">
-              <img src="https://flagcdn.com/w40/cn.png" alt="China" style="width: 24px; vertical-align: middle;">
-            </a>
-          </div>
-        </div>
-
-        <label class="theme-toggle" title="Alternar Tema">
-          <input type="checkbox" id="theme-toggle">
-          <span class="slider"></span>
-        </label>
-      </div>
-    </div>
-  </nav>
-
-  <section id="about" class="hero">
-    <div class="hero-glow"></div>
-    <div class="container">
-      <div class="about-content reveal">
-        <div class="about-text">
-          <div class="badge"><i class="fas fa-rocket"></i> <span data-translate="hero.ready">Ready to Relocate</span></div>
-          <h1 data-translate-html="hero.greeting">Olá, eu sou <span>Yan Cauê</span></h1>
-          <h2 data-translate="hero.title">Front-End Developer</h2>
-          
-          <p id="bio" data-translate-html="hero.bio" class="bio-text">
-            Desenvolvedor Front-End | Next.js, React, TypeScript <br>
-            Styled Components, Tailwind, Jest | Ciência da Computação <br>
-            Ex-gestor de TI (+250 usuários) | Visão Back-End
-          </p>
-
-          <div class="stats">
-            <div class="stat">
-              <span class="stat-number" id="repos-count">--</span>
-              <span class="stat-label" data-translate="hero.stats.repos">Repositórios</span>
-            </div>
-            <div class="stat">
-              <span class="stat-number" id="followers-count">--</span>
-              <span class="stat-label" data-translate="hero.stats.followers">Seguidores</span>
-            </div>
-            <div class="stat">
-              <span class="stat-number" id="following-count">--</span>
-              <span class="stat-label" data-translate="hero.stats.following">Seguindo</span>
-            </div>
-          </div>
-          <div class="btn-group">
-            <a href="https://wa.me/5535997209703" target="_blank" class="btn btn-primary" data-translate-html="hero.buttons.chat">
-              <i class="fab fa-whatsapp"></i> Vamos Conversar
-            </a>
-            <a href="https://drive.google.com/uc?export=download&id=1oXbzVrK5DDx-WHCt4QgzQ37BGEWFYoV5" class="btn btn-outline" data-translate-html="hero.buttons.cv">
-              <i class="fas fa-download"></i> Baixar Currículo
-            </a>
-          </div>
-        </div>
-        <div class="about-image">
-          <div class="profile-pic">
-             <img id="profile-pic" src="https://avatars.githubusercontent.com/u/127339610?v=4" alt="Yan Cauê">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="skills">
-    <div class="container reveal">
-      <h3 class="section-title" data-translate-html="sections.skills"><span>#</span> Skills & Stack</h3>
-      <div class="skills-categories">
+    <main class="dashboard-container">
         
-        <div class="skill-category">
-          <h4 class="category-title"><i class="fas fa-code"></i> Front-End</h4>
-          <div class="skills-grid">
-            <div class="skill-tag">HTML5</div>
-            <div class="skill-tag">CSS3</div>
-            <div class="skill-tag">JavaScript</div>
-            <div class="skill-tag">TypeScript</div>
-            <div class="skill-tag">React.js</div>
-            <div class="skill-tag">Next.js</div>
-            <div class="skill-tag">Styled Components</div>
-            <div class="skill-tag">Tailwind CSS</div>
-            <div class="skill-tag">Redux</div>
-            <div class="skill-tag">Context API</div>
-            <div class="skill-tag">Vite</div>
-            <div class="skill-tag">Figma</div>
-            <div class="skill-tag">Responsive Design</div>
-          </div>
+        <div class="card profile-card glow-blue">
+            <div class="profile-header">
+                <img src="https://avatars.githubusercontent.com/u/127339610?v=4" alt="Yan Avatar" class="avatar">
+                <div class="status-box">
+                    <span class="blinking-dot"></span>
+                    <span class="status-text">ONLINE // CODING</span>
+                </div>
+            </div>
+            <h1>YAN CAUÊ</h1>
+            <p class="role">Front-End Engineer <span class="divider">|</span> Automation</p>
+            <div class="level-bar">
+                <div class="level-fill"></div>
+                <span>LVL. 25 DEVELOPER</span>
+            </div>
         </div>
 
-        <div class="skill-category">
-          <h4 class="category-title"><i class="fas fa-server"></i> Back-End</h4>
-          <div class="skills-grid">
-            <div class="skill-tag">Node.js</div>
-            <div class="skill-tag">Express</div>
-            <div class="skill-tag">Python</div>
-            <div class="skill-tag">REST APIs</div>
-            <div class="skill-tag">PostgreSQL</div>
-            <div class="skill-tag">Prisma SQL</div>
-            <div class="skill-tag">SOLID</div>
-            <div class="skill-tag">Clean Code</div>
-          </div>
+        <div class="card github-stats-card">
+            <h3><i class="fas fa-chart-line"></i> ACTIVITY LOG</h3>
+            <div class="graph-container">
+                <img src="https://ghchart.rshah.org/00f3ff/YanzinhoCaue" alt="Yan's Github Chart" />
+            </div>
         </div>
 
-        <div class="skill-category">
-          <h4 class="category-title"><i class="fas fa-robot"></i> Advanced</h4>
-          <div class="skills-grid">
-            <div class="skill-tag" data-translate="skills.ai">Inteligência Artificial</div>
-            <div class="skill-tag">Web Scraping</div>
-            <div class="skill-tag" data-translate="skills.automation">Automação</div>
-            <div class="skill-tag" data-translate="skills.security">Segurança Cibernética</div>
-            <div class="skill-tag">Jest</div>
-            <div class="skill-tag">Git & GitHub</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="education">
-    <div class="container reveal">
-      <h3 class="section-title" data-translate-html="sections.education"><span>#</span> Educação & Cursos</h3>
-      
-      <div class="education-list">
-        
-        <div class="education-item">
-          <div class="education-header">
-            <h4 class="education-degree" data-translate="education.estacio.degree">Bacharelado e Licenciatura, Ciência da Computação</h4>
-            <span class="education-period" data-translate="education.estacio.period">jan de 2025 – nov de 2029</span>
-          </div>
-          <div class="education-institution">
-            <i class="fas fa-graduation-cap"></i> Estácio
-          </div>
-          <p class="education-desc" data-translate="education.estacio.desc">
-            Formação abrangente em programação, algoritmos, segurança cibernética e IA.
-          </p>
-        </div>
-
-        <div class="education-item">
-          <div class="education-header">
-            <h4 class="education-degree" data-translate="education.igniteReact.degree">Trilha Ignite ReactJS</h4>
-            <span class="education-period" data-translate="education.igniteReact.period">fev de 2023 – set de 2023</span>
-          </div>
-          <div class="education-institution">
-            <i class="fas fa-laptop-code"></i> Rocketseat
-          </div>
-          <p class="education-desc" data-translate="education.igniteReact.desc">
-            Capacitação intensiva com foco prático no ecossistema React.
-          </p>
-        </div>
-
-        <div class="education-item">
-          <div class="education-header">
-            <h4 class="education-degree" data-translate="education.igniteNode.degree">Trilha Ignite Node.js</h4>
-            <span class="education-period" data-translate="education.igniteNode.period">fev de 2023 – set de 2023</span>
-          </div>
-          <div class="education-institution">
-            <i class="fas fa-server"></i> Rocketseat
-          </div>
-          <p class="education-desc" data-translate="education.igniteNode.desc">
-            Formação intensiva em back-end moderno usando Node.js.
-          </p>
-        </div>
-
-      </div>
-      <div class="btn-center">
-        <a href="https://www.linkedin.com/in/yancaue/details/education/" target="_blank" class="btn btn-outline" data-translate-html="buttons.linkedin">
-            <i class="fab fa-linkedin"></i> Ver Mais no LinkedIn
+        <a href="https://yancaue.me/Portifolio/" class="card main-action glow-purple">
+            <div class="action-content">
+                <h2>ACESSAR SISTEMA</h2>
+                <p>Portfólio Completo v1.0</p>
+            </div>
+            <i class="fas fa-chevron-right action-icon"></i>
+            <div class="scan-effect"></div>
         </a>
-      </div>
-    </div>
-  </section>
 
-  <section id="experience">
-    <div class="container reveal">
-      <h3 class="section-title" data-translate-html="sections.experience"><span>#</span> Experiência Profissional</h3>
-      <div class="timeline">
-        
-        <div class="timeline-item left">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-date" data-translate="experience.crabi.period">02/2023 - 03/2025</div>
-            <h4 class="role" data-translate-html="experience.crabi.role"><i class="fas fa-user-tie"></i> Gestor de TI</h4>
-            <span class="company">Grupo Crabi</span>
-            <p class="timeline-desc" data-translate="experience.crabi.desc">
-              Liderança da operação de TI para 7 empresas. Implementação de ERPs, VoIP e automação.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item right">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-date" data-translate="experience.faarpe.period">08/2020 - 08/2022</div>
-            <h4 class="role" data-translate-html="experience.faarpe.role"><i class="fas fa-paint-brush"></i> Designer Gráfico & Web</h4>
-            <span class="company">Faarpe Esportes</span>
-            <p class="timeline-desc" data-translate="experience.faarpe.desc">
-              Desenvolvimento de e-commerce e criação de artes digitais.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item left">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-date" data-translate="experience.freelance.period">2018 - Presente</div>
-            <h4 class="role" data-translate-html="experience.freelance.role"><i class="fas fa-laptop-code"></i> Full Stack Developer</h4>
-            <span class="company">Freelancer</span>
-            <p class="timeline-desc" data-translate="experience.freelance.desc">
-              Criação de bots, automações e desenvolvimento web sob medida.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <div class="container reveal">
-      <h3 class="section-title" data-translate-html="sections.projects"><span>#</span> Projetos no GitHub</h3>
-      
-      <div id="loading" class="spinner-container">
-        <div class="spinner"></div>
-        <p data-translate="loading">Carregando projetos...</p>
-      </div>
-
-      <div class="projects-grid" id="github-projects"></div>
-      
-      <div class="btn-center">
-        <a href="https://github.com/YanzinhoCaue" target="_blank" class="btn btn-outline" data-translate-html="buttons.github">Ver todos no GitHub</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="container reveal">
-      <h3 class="section-title" data-translate-html="sections.contact"><span>#</span> Contato</h3>
-      <div class="contact-content">
-        <div class="contact-info">
-          <p class="contact-text" data-translate-html="contact.text">Estou disponível para novos desafios e realocação. <br>Vamos conversar sobre oportunidades!</p>
-          <div class="contact-details">
-            <div class="contact-item">
-              <i class="fas fa-map-marker-alt"></i>
-              <span data-translate="contact.location">Eloi Mendes - MG - Brasil</span>
+        <div class="card spotify-card">
+            <div class="spotify-header">
+                <i class="fab fa-spotify"></i> SONIC INPUT
+                <div class="equalizer">
+                    <span></span><span></span><span></span><span></span>
+                </div>
             </div>
-            <div class="contact-item">
-              <i class="fas fa-envelope"></i>
-              <span id="contact-email">coldecmastercrelan@gmail.com</span>
-              <button id="copy-email-btn" class="copy-btn" title="Copiar Email">
-                <i class="far fa-copy"></i>
-              </button>
+            <div class="spotify-embed">
+               <a href="https://open.spotify.com/user/312yarwvfin2wvuu5lffagycknkq" target="_blank">
+                  <img src="https://spotify-recently-played-readme.vercel.app/api?user=312yarwvfin2wvuu5lffagycknkq&width=300" alt="Spotify Listening">
+               </a>
             </div>
-          </div>
         </div>
-        <div class="social-links">
-          <a href="https://github.com/YanzinhoCaue" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
-          <a href="https://linkedin.com/in/yancaue" target="_blank" class="social-btn"><i class="fab fa-linkedin"></i></a>
-          <a href="mailto:coldecmastercrelan@gmail.com" class="social-btn"><i class="fas fa-envelope"></i></a>
-          <a href="https://wa.me/5535997209703" target="_blank" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+
+        <div class="card time-card">
+            <div class="clock" id="clock">00:00</div>
+            <div class="location"><i class="fas fa-satellite-dish"></i> MG, BR</div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <footer>
-    <div class="container footer-content">
-      <div class="footer-info">
-        <p class="copyright" data-translate="footer.copyright">
-          © 2025 Yan Cauê Gomes Pereira.
-        </p>
-      </div>
-      
-      <div class="footer-stack">
-        <span class="stack-label" data-translate="footer.developed">Desenvolvido com:</span>
-        <div class="stack-icons">
-          <i class="fab fa-html5 tech-icon" title="HTML5"></i>
-          <i class="fab fa-css3-alt tech-icon" title="CSS3"></i>
-          <i class="fab fa-js tech-icon" title="JavaScript"></i>
+        <div class="card social-card">
+            <a href="https://wa.me/5535997209703" target="_blank" class="social-btn whatsapp glow-green" title="Chamar no WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            
+            <a href="https://github.com/YanzinhoCaue" target="_blank" class="social-btn github" title="Ver GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            
+            <a href="https://linkedin.com/in/yancue" target="_blank" class="social-btn linkedin" title="Ver LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+
+            <a href="mailto:coldecmastercrelan@gmail.com" class="social-btn email" title="Enviar E-mail">
+                <i class="fas fa-envelope"></i>
+            </a>
         </div>
-      </div>
-    </div>
-  </footer>
 
-  <button id="scroll-to-top" class="scroll-to-top-btn" title="Voltar ao topo">
-    <i class="fas fa-arrow-up"></i>
-  </button>
+    </main>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
