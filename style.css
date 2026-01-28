@@ -7,6 +7,10 @@
     --neon-green: #0aff0a;
     /* NOVA COR PARA SERVIÇOS */
     --neon-orange: #ff9d00;
+    /* NOVA COR PARA IMENUFLOW */
+    --neon-pink: #ff1493;
+    /* NOVA COR PARA EM BREVE */
+    --neon-gray: #888888;
     --font-head: 'Orbitron', sans-serif;
     --font-body: 'JetBrains Mono', monospace;
 }
@@ -201,8 +205,46 @@ body {
     animation-delay: 2.0s;
 }
 
+/* IMENUFLOW (Estilo Rosa) */
+.imenu-action { 
+    text-decoration: none; color: white; display: flex; flex-direction: row; align-items: center; justify-content: space-between;
+    background: linear-gradient(90deg, rgba(255, 20, 147, 0.1), transparent); 
+    border-color: rgba(255, 20, 147, 0.3); 
+    grid-column: span 2; grid-row: span 1; 
+}
+.imenu-action h2 { font-family: var(--font-head); font-size: 1.2rem; color: var(--neon-pink); margin: 0; }
+.imenu-action .action-icon { font-size: 1.5rem; color: var(--neon-pink); }
+.glow-pink:hover { border-color: var(--neon-pink); box-shadow: 0 0 15px rgba(255, 20, 147, 0.2); }
+
+.scan-effect-pink { 
+    position: absolute; top: 0; left: -100%; width: 50px; height: 100%; 
+    background: linear-gradient(90deg, transparent, rgba(255, 20, 147, 0.2), transparent); 
+    animation: scan 3s infinite linear; 
+    animation-delay: 1.5s;
+}
+
+/* EM BREVE (Estilo Cinza) */
+.coming-soon-action { 
+    text-decoration: none; color: white; display: flex; flex-direction: row; align-items: center; justify-content: space-between;
+    background: linear-gradient(90deg, rgba(136, 136, 136, 0.1), transparent); 
+    border-color: rgba(136, 136, 136, 0.3); 
+    grid-column: span 2; grid-row: span 1; 
+    opacity: 0.7;
+    pointer-events: none;
+}
+.coming-soon-action h2 { font-family: var(--font-head); font-size: 1.2rem; color: var(--neon-gray); margin: 0; }
+.coming-soon-action .action-icon { font-size: 1.5rem; color: var(--neon-gray); }
+.glow-gray { border-color: rgba(136, 136, 136, 0.3); }
+
+.scan-effect-gray { 
+    position: absolute; top: 0; left: -100%; width: 50px; height: 100%; 
+    background: linear-gradient(90deg, transparent, rgba(136, 136, 136, 0.2), transparent); 
+    animation: scan 3s infinite linear; 
+    animation-delay: 2.5s;
+}
+
 /* RESPONSIVO ATUALIZADO */
 @media (max-width: 768px) {
     .dashboard-container { grid-template-columns: 1fr; grid-auto-rows: auto; }
-    .profile-card, .github-stats-card, .main-action, .agro-action, .spotify-card, .time-card, .social-card, .dream-action, .service-action { grid-column: span 1; grid-row: auto; }
+    .profile-card, .github-stats-card, .main-action, .agro-action, .spotify-card, .time-card, .social-card, .dream-action, .service-action, .imenu-action, .coming-soon-action { grid-column: span 1; grid-row: auto; }
 }
