@@ -11,6 +11,9 @@
     --neon-pink: #ff1493;
     /* NOVA COR PARA EM BREVE */
     --neon-gray: #888888;
+    --neon-yellow: #ffd300;
+    --neon-red: #ff4d4d;
+    --neon-amber: #ffb347;
     --font-head: 'Orbitron', sans-serif;
     --font-body: 'JetBrains Mono', monospace;
 }
@@ -51,7 +54,7 @@ body {
 .dashboard-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: minmax(140px, auto);
+    grid-auto-rows: minmax(105px, auto);
     gap: 15px;
     width: 95%;
     max-width: 1100px;
@@ -75,9 +78,11 @@ body {
 /* GRID POSITIONS */
 .profile-card { grid-column: span 2; grid-row: span 2; justify-content: center; }
 .github-stats-card { grid-column: span 2; grid-row: span 1; }
-.main-action { grid-column: span 2; grid-row: span 1; }
-.spotify-card { grid-column: span 2; grid-row: span 2; padding: 0; }
-.agro-action { grid-column: span 2; grid-row: span 1; }
+.main-action { grid-column: 1 / 3; grid-row: 3; }
+.agro-action { grid-column: 1 / 3; grid-row: 4; }
+.design-action { grid-column: 1 / 3; grid-row: 5; }
+.service-action { grid-column: 1 / 3; grid-row: 6; }
+.spotify-card { grid-column: 3 / 5; grid-row: 3 / span 4; padding: 0; }
 .time-card { grid-column: span 2; grid-row: span 1; justify-content: center; align-items: center; }
 .social-card { grid-column: span 4; display: flex; flex-direction: row; justify-content: space-around; align-items: center; padding: 20px; }
 
@@ -130,17 +135,73 @@ body {
 
 /* AÇÕES ORIGINAIS */
 .main-action, .agro-action { text-decoration: none; color: white; display: flex; flex-direction: row; align-items: center; justify-content: space-between; }
+.main-action,
+.agro-action,
+.design-action,
+.dream-action,
+.service-action,
+.imenu-action,
+.coming-soon-action,
+.scraper-action,
+.mailer-action {
+    padding: 10px 18px;
+}
+
+.portfolio-action {
+    min-height: 74px;
+    padding: 6px 12px;
+}
+
+.portfolio-action h2 {
+    font-size: 0.88rem;
+}
+
+.portfolio-action .action-icon {
+    font-size: 1rem;
+}
+
+.portfolio-action .action-content p {
+    font-size: 0.62rem;
+}
 .main-action { background: linear-gradient(90deg, rgba(188, 19, 254, 0.1), transparent); border-color: rgba(188, 19, 254, 0.3); }
-.main-action h2 { font-family: var(--font-head); font-size: 1.2rem; color: var(--neon-purple); margin: 0; }
-.main-action .action-icon { font-size: 1.5rem; color: var(--neon-purple); }
+.main-action h2 { font-family: var(--font-head); font-size: 1.05rem; color: var(--neon-purple); margin: 0; }
+.main-action .action-icon { font-size: 1.3rem; color: var(--neon-purple); }
 .glow-purple:hover { border-color: var(--neon-purple); box-shadow: 0 0 15px rgba(188, 19, 254, 0.2); }
 
 .agro-action { background: linear-gradient(90deg, rgba(10, 255, 10, 0.1), transparent); border-color: rgba(10, 255, 10, 0.3); }
-.agro-action h2 { font-family: var(--font-head); font-size: 1.2rem; color: var(--neon-green); margin: 0; }
-.agro-action .action-icon { font-size: 1.5rem; color: var(--neon-green); }
+.agro-action h2 { font-family: var(--font-head); font-size: 1.05rem; color: var(--neon-green); margin: 0; }
+.agro-action .action-icon { font-size: 1.3rem; color: var(--neon-green); }
 .glow-green:hover { border-color: var(--neon-green); box-shadow: 0 0 15px rgba(10, 255, 10, 0.2); }
 
-.action-content p { font-size: 0.8rem; color: #aaa; margin: 0; }
+.design-action {
+    text-decoration: none; color: white; display: flex; flex-direction: row; align-items: center; justify-content: space-between;
+    background: linear-gradient(90deg, rgba(255, 179, 71, 0.12), transparent);
+    border-color: rgba(255, 179, 71, 0.35);
+}
+.design-action h2 { font-family: var(--font-head); font-size: 1.05rem; color: var(--neon-amber); margin: 0; }
+.design-action .action-icon { font-size: 1.3rem; color: var(--neon-amber); }
+.glow-amber:hover { border-color: var(--neon-amber); box-shadow: 0 0 15px rgba(255, 179, 71, 0.25); }
+
+.main-action.portfolio-action h2,
+.agro-action.portfolio-action h2,
+.design-action.portfolio-action h2 {
+    font-size: 0.88rem;
+}
+
+.main-action.portfolio-action .action-icon,
+.agro-action.portfolio-action .action-icon,
+.design-action.portfolio-action .action-icon {
+    font-size: 1rem;
+}
+
+.scan-effect-amber {
+    position: absolute; top: 0; left: -100%; width: 50px; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 179, 71, 0.22), transparent);
+    animation: scan 3s infinite linear;
+    animation-delay: 1.2s;
+}
+
+.action-content p { font-size: 0.72rem; color: #aaa; margin: 0; }
 .scan-effect, .scan-effect-green { position: absolute; top: 0; left: -100%; width: 50px; height: 100%; animation: scan 3s infinite linear; }
 .scan-effect { background: linear-gradient(90deg, transparent, rgba(188, 19, 254, 0.2), transparent); }
 .scan-effect-green { background: linear-gradient(90deg, transparent, rgba(10, 255, 10, 0.2), transparent); animation-delay: 1.5s; }
@@ -176,8 +237,8 @@ body {
     border-color: rgba(0, 243, 255, 0.3); 
     grid-column: span 2; grid-row: span 1; 
 }
-.dream-action h2 { font-family: var(--font-head); font-size: 1.2rem; color: var(--neon-blue); margin: 0; }
-.dream-action .action-icon { font-size: 1.5rem; color: var(--neon-blue); }
+.dream-action h2 { font-family: var(--font-head); font-size: 1.05rem; color: var(--neon-blue); margin: 0; }
+.dream-action .action-icon { font-size: 1.3rem; color: var(--neon-blue); }
 .glow-cyan:hover { border-color: var(--neon-blue); box-shadow: 0 0 15px rgba(0, 243, 255, 0.2); }
 
 .scan-effect-cyan { 
@@ -194,8 +255,8 @@ body {
     border-color: rgba(255, 157, 0, 0.3); 
     grid-column: span 2; grid-row: span 1; 
 }
-.service-action h2 { font-family: var(--font-head); font-size: 1.2rem; color: var(--neon-orange); margin: 0; }
-.service-action .action-icon { font-size: 1.5rem; color: var(--neon-orange); }
+.service-action h2 { font-family: var(--font-head); font-size: 1.05rem; color: var(--neon-orange); margin: 0; }
+.service-action .action-icon { font-size: 1.3rem; color: var(--neon-orange); }
 .glow-orange:hover { border-color: var(--neon-orange); box-shadow: 0 0 15px rgba(255, 157, 0, 0.2); }
 
 .scan-effect-orange { 
@@ -212,8 +273,8 @@ body {
     border-color: rgba(255, 20, 147, 0.3); 
     grid-column: span 2; grid-row: span 1; 
 }
-.imenu-action h2 { font-family: var(--font-head); font-size: 1.2rem; color: var(--neon-pink); margin: 0; }
-.imenu-action .action-icon { font-size: 1.5rem; color: var(--neon-pink); }
+.imenu-action h2 { font-family: var(--font-head); font-size: 1.05rem; color: var(--neon-pink); margin: 0; }
+.imenu-action .action-icon { font-size: 1.3rem; color: var(--neon-pink); }
 .glow-pink:hover { border-color: var(--neon-pink); box-shadow: 0 0 15px rgba(255, 20, 147, 0.2); }
 
 .scan-effect-pink { 
@@ -221,6 +282,42 @@ body {
     background: linear-gradient(90deg, transparent, rgba(255, 20, 147, 0.2), transparent); 
     animation: scan 3s infinite linear; 
     animation-delay: 1.5s;
+}
+
+/* H2 SCRAPER PRO (Estilo Amarelo) */
+.scraper-action {
+    text-decoration: none; color: white; display: flex; flex-direction: row; align-items: center; justify-content: space-between;
+    background: linear-gradient(90deg, rgba(255, 211, 0, 0.1), transparent);
+    border-color: rgba(255, 211, 0, 0.3);
+    grid-column: span 2; grid-row: span 1;
+}
+.scraper-action h2 { font-family: var(--font-head); font-size: 1.05rem; color: var(--neon-yellow); margin: 0; }
+.scraper-action .action-icon { font-size: 1.3rem; color: var(--neon-yellow); }
+.glow-yellow:hover { border-color: var(--neon-yellow); box-shadow: 0 0 15px rgba(255, 211, 0, 0.2); }
+
+.scan-effect-yellow {
+    position: absolute; top: 0; left: -100%; width: 50px; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 211, 0, 0.2), transparent);
+    animation: scan 3s infinite linear;
+    animation-delay: 2.2s;
+}
+
+/* EAZY MAIL BLASTER (Estilo Vermelho) */
+.mailer-action {
+    text-decoration: none; color: white; display: flex; flex-direction: row; align-items: center; justify-content: space-between;
+    background: linear-gradient(90deg, rgba(255, 77, 77, 0.1), transparent);
+    border-color: rgba(255, 77, 77, 0.3);
+    grid-column: span 2; grid-row: span 1;
+}
+.mailer-action h2 { font-family: var(--font-head); font-size: 1.05rem; color: var(--neon-red); margin: 0; }
+.mailer-action .action-icon { font-size: 1.3rem; color: var(--neon-red); }
+.glow-red:hover { border-color: var(--neon-red); box-shadow: 0 0 15px rgba(255, 77, 77, 0.2); }
+
+.scan-effect-red {
+    position: absolute; top: 0; left: -100%; width: 50px; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 77, 77, 0.2), transparent);
+    animation: scan 3s infinite linear;
+    animation-delay: 2.7s;
 }
 
 /* EM BREVE (Estilo Cinza) */
@@ -232,8 +329,8 @@ body {
     opacity: 0.7;
     pointer-events: none;
 }
-.coming-soon-action h2 { font-family: var(--font-head); font-size: 1.2rem; color: var(--neon-gray); margin: 0; }
-.coming-soon-action .action-icon { font-size: 1.5rem; color: var(--neon-gray); }
+.coming-soon-action h2 { font-family: var(--font-head); font-size: 1.05rem; color: var(--neon-gray); margin: 0; }
+.coming-soon-action .action-icon { font-size: 1.3rem; color: var(--neon-gray); }
 .glow-gray { border-color: rgba(136, 136, 136, 0.3); }
 
 .scan-effect-gray { 
@@ -243,8 +340,46 @@ body {
     animation-delay: 2.5s;
 }
 
+/* PALETA INDIVIDUAL: cada bloco com uma cor */
+.dashboard-container > a.card {
+    --block-color: #00f3ff;
+    background: linear-gradient(90deg, color-mix(in srgb, var(--block-color) 12%, transparent), transparent) !important;
+    border-color: color-mix(in srgb, var(--block-color) 35%, transparent) !important;
+}
+
+.dashboard-container > a.card h2,
+.dashboard-container > a.card .action-icon {
+    color: var(--block-color) !important;
+}
+
+.dashboard-container > a.card:hover {
+    border-color: var(--block-color) !important;
+    box-shadow: 0 0 15px color-mix(in srgb, var(--block-color) 25%, transparent);
+}
+
+.dashboard-container > a.card [class^="scan-effect"] {
+    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--block-color) 22%, transparent), transparent) !important;
+}
+
+.dashboard-container > a.card:nth-of-type(1) { --block-color: #bc13fe; }
+.dashboard-container > a.card:nth-of-type(2) { --block-color: #12ff9a; }
+.dashboard-container > a.card:nth-of-type(3) { --block-color: #ffb347; }
+.dashboard-container > a.card:nth-of-type(4) { --block-color: #ff8a00; }
+.dashboard-container > a.card:nth-of-type(5) { --block-color: #00f3ff; }
+.dashboard-container > a.card:nth-of-type(6) { --block-color: #ff3da7; }
+.dashboard-container > a.card:nth-of-type(7) { --block-color: #ffd300; }
+.dashboard-container > a.card:nth-of-type(8) { --block-color: #ff4d4d; }
+.dashboard-container > a.card:nth-of-type(9) { --block-color: #7cf542; }
+.dashboard-container > a.card:nth-of-type(10) { --block-color: #7a6bff; }
+.dashboard-container > a.card:nth-of-type(11) { --block-color: #00c2ff; }
+.dashboard-container > a.card:nth-of-type(12) { --block-color: #ff6f61; }
+.dashboard-container > a.card:nth-of-type(13) { --block-color: #39d8c0; }
+.dashboard-container > a.card:nth-of-type(14) { --block-color: #ff5ed1; }
+.dashboard-container > a.card:nth-of-type(15) { --block-color: #9aa0a6; }
+.dashboard-container > a.card:nth-of-type(16) { --block-color: #6f7680; }
+
 /* RESPONSIVO ATUALIZADO */
 @media (max-width: 768px) {
     .dashboard-container { grid-template-columns: 1fr; grid-auto-rows: auto; }
-    .profile-card, .github-stats-card, .main-action, .agro-action, .spotify-card, .time-card, .social-card, .dream-action, .service-action, .imenu-action, .coming-soon-action { grid-column: span 1; grid-row: auto; }
+    .profile-card, .github-stats-card, .main-action, .agro-action, .design-action, .spotify-card, .time-card, .social-card, .dream-action, .service-action, .imenu-action, .coming-soon-action, .scraper-action, .mailer-action { grid-column: span 1; grid-row: auto; }
 }
