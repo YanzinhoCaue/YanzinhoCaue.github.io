@@ -1,226 +1,90 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yan Cauê | Nexus Hub</title>
+// --- RELÓGIO ---
+function updateClock() {
+    const now = new Date();
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    // Hora
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    
+    const clockEl = document.getElementById('clock');
+    if(clockEl) clockEl.textContent = `${hours}:${minutes}:${seconds}`;
 
-    <div class="cyber-grid-bg"></div>
-    <div class="vignette"></div>
+    // Data
+    const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+    const dateEl = document.getElementById('date');
+    if(dateEl) dateEl.textContent = now.toLocaleDateString('pt-BR', options).toUpperCase();
+}
 
-    <main class="dashboard-container">
+setInterval(updateClock, 1000);
+updateClock(); 
+
+// --- TERMINAL GITHUB (A PARTE QUE FALTAVA) ---
+async function fetchGitHubActivity() {
+    const container = document.getElementById('github-feed');
+    const username = 'YanzinhoCaue';
+    
+    if (!container) return; // Segurança caso o elemento não exista
+
+    try {
+        // Busca os últimos 4 eventos públicos
+        const res = await fetch(`https://api.github.com/users/${username}/events?per_page=4`);
         
-        <div class="card profile-card glow-blue">
-            <div class="profile-header">
-                <img src="https://avatars.githubusercontent.com/u/127339610?v=4" alt="Yan Avatar" class="avatar">
-                <div class="status-box">
-                    <span class="blinking-dot"></span>
-                    <span class="status-text">SYSTEM ONLINE</span>
-                </div>
-            </div>
-            <h1>YAN CAUÊ</h1>
-            <p class="role">Especialista em Soluções Digitais</p>
-            <div class="level-bar">
-                <div class="level-fill"></div>
-                <span>LVL. 26 MULTI-CLASS</span>
-            </div>
-        </div>
+        if (!res.ok) throw new Error('Falha na conexão');
+        
+        const data = await res.json();
+        container.innerHTML = ''; // Limpa o texto "LOADING..."
 
-        <div class="card github-stats-card">
-            <h3><i class="fas fa-terminal"></i> SYSTEM LOGS // GITHUB</h3>
-            <div class="terminal-window" id="github-feed">
-                <span class="loading-text">> CONNECTING TO GITHUB_API...</span>
-            </div>
-        </div>
+        data.forEach((event, index) => {
+            // Formata a data (dia/mês)
+            const date = new Date(event.created_at).toLocaleDateString('pt-BR', {day: '2-digit', month: '2-digit'});
+            
+            // Define o ícone e ação baseada no tipo de evento
+            let action = 'UPDATE';
+            let icon = 'fas fa-pen'; // Default
+            let colorClass = '';
 
-        <div class="card time-card">
-            <div class="clock" id="clock">00:00</div>
-            <div class="location"><i class="fas fa-satellite-dish"></i> MG, BR</div>
-        </div>
+            if (event.type === 'PushEvent') {
+                action = 'PUSH';
+                icon = 'fas fa-code-branch';
+                colorClass = 'color-push';
+            } else if (event.type === 'WatchEvent') {
+                action = 'STAR';
+                icon = 'fas fa-star';
+                colorClass = 'color-star';
+            } else if (event.type === 'CreateEvent') {
+                action = 'CREATE';
+                icon = 'fas fa-plus';
+                colorClass = 'color-create';
+            } else if (event.type === 'PullRequestEvent') {
+                action = 'PR';
+                icon = 'fas fa-code-pull-request';
+            }
 
-        <a href="https://yancaue.me/Portifolio/" class="card main-action portfolio-action glow-purple">
-            <div class="action-content">
-                <h2>DEV SYSTEM</h2>
-                <p>Portfólio de Engenharia & Code</p>
-            </div>
-            <i class="fas fa-code action-icon"></i>
-            <div class="scan-effect"></div>
-        </a>
+            // Limpa o nome do repo
+            const repoName = event.repo.name.replace(`${username}/`, '');
 
-        <a href="./Portifolio-Agro/" class="card agro-action portfolio-action glow-green">
-            <div class="action-content">
-                <h2>WORKER PROFILE</h2>
-                <p>H-2A & H-2B: Agro & General Labor</p>
-            </div>
-            <i class="fas fa-tractor action-icon"></i>
-            <div class="scan-effect-green"></div>
-        </a>
+            // Cria o elemento HTML
+            const item = document.createElement('div');
+            item.className = 'feed-item';
+            item.style.animationDelay = `${index * 0.2}s`; // Efeito cascata
+            
+            item.innerHTML = `
+                <span class="feed-arrow">></span>
+                <span class="feed-date">[${date}]</span>
+                <i class="${icon} ${colorClass}" style="font-size: 0.7rem;"></i>
+                <span class="feed-action ${colorClass}">${action}</span>
+                <span class="feed-repo">${repoName}</span>
+            `;
+            
+            container.appendChild(item);
+        });
 
-        <a href="https://yancaue.me/Portifolio_Designer/" target="_blank" class="card design-action portfolio-action glow-amber">
-            <div class="action-content">
-                <h2>DESIGN PORTFOLIO</h2>
-                <p>UI, branding e projetos visuais</p>
-            </div>
-            <i class="fas fa-palette action-icon"></i>
-            <div class="scan-effect-amber"></div>
-        </a>
+    } catch (err) {
+        container.innerHTML = '<span style="color: #ff4444; font-size: 0.8rem;">> CONNECTION_ERR: OFFLINE</span>';
+        console.error(err);
+    }
+}
 
-        <div class="card spotify-card">
-            <div class="spotify-header">
-                <i class="fab fa-spotify"></i> SONIC INPUT
-                <div class="equalizer">
-                    <span></span><span></span><span></span><span></span>
-                </div>
-            </div>
-            <div class="spotify-embed">
-               <a href="https://open.spotify.com/user/312yarwvfin2wvuu5lffagycknkq" target="_blank">
-                  <img src="https://spotify-recently-played-readme.vercel.app/api?user=312yarwvfin2wvuu5lffagycknkq&width=300" alt="Spotify Listening">
-               </a>
-            </div>
-        </div>
-
-        <a href="https://krin.tech" target="_blank" class="card service-action portfolio-action glow-orange">
-            <div class="action-content">
-                <h2>SERVICES HUB</h2>
-                <p>Consultoria & Soluções Digitais</p>
-            </div>
-            <i class="fas fa-briefcase action-icon"></i>
-            <div class="scan-effect-orange"></div>
-        </a>
-
-        <a href="https://dream.yancaue.me" target="_blank" class="card dream-action glow-cyan">
-            <div class="action-content">
-                <h2>DREAM NEXUS</h2>
-                <p>SaaS de Planejamento Neural</p>
-            </div>
-            <i class="fas fa-network-wired action-icon"></i>
-            <div class="scan-effect-cyan"></div>
-        </a>
-
-        <a href="https://imenuflow.krin.tech" target="_blank" class="card imenu-action glow-pink">
-            <div class="action-content">
-                <h2>IMENUFLOW</h2>
-                <p>Sistema de Gestão de Menus</p>
-            </div>
-            <i class="fas fa-utensils action-icon"></i>
-            <div class="scan-effect-pink"></div>
-        </a>
-
-        <a href="https://yancaue.me/eazy_scraper_landpage/" target="_blank" class="card scraper-action glow-yellow">
-            <div class="action-content">
-                <h2>H2 SCRAPER PRO</h2>
-                <p>Scraper Inteligente para Vagas H-2A</p>
-            </div>
-            <i class="fas fa-magnifying-glass-chart action-icon"></i>
-            <div class="scan-effect-yellow"></div>
-        </a>
-
-        <a href="https://yancaue.me/eazy_mail_landpage/" target="_blank" class="card mailer-action glow-red">
-            <div class="action-content">
-                <h2>EAZY MAIL BLASTER</h2>
-                <p>Disparador de e-mail em massa</p>
-            </div>
-            <i class="fas fa-paper-plane action-icon"></i>
-            <div class="scan-effect-red"></div>
-        </a>
-
-        <a href="https://yancaue.me/PROJETO-WIKI-POKEMON/" target="_blank" class="card dream-action glow-cyan">
-            <div class="action-content">
-                <h2>WIKI POKEMON</h2>
-                <p>Projeto com interface temática e navegação</p>
-            </div>
-            <i class="fas fa-dragon action-icon"></i>
-            <div class="scan-effect-cyan"></div>
-        </a>
-
-        <a href="https://yancaue.me/PROJETO-UI-UX-DESIGNER/" target="_blank" class="card imenu-action glow-pink">
-            <div class="action-content">
-                <h2>UI UX DESIGNER</h2>
-                <p>Conceitos visuais e experiência do usuário</p>
-            </div>
-            <i class="fas fa-pen-ruler action-icon"></i>
-            <div class="scan-effect-pink"></div>
-        </a>
-
-        <a href="https://yancaue.me/PROJETO-FETCH-GITHUB-API/" target="_blank" class="card scraper-action glow-yellow">
-            <div class="action-content">
-                <h2>FETCH GITHUB API</h2>
-                <p>Consumo de API e renderização de dados</p>
-            </div>
-            <i class="fas fa-code-branch action-icon"></i>
-            <div class="scan-effect-yellow"></div>
-        </a>
-
-        <a href="https://yancaue.me/PROJETO-PLAYER-VR/" target="_blank" class="card mailer-action glow-red">
-            <div class="action-content">
-                <h2>PLAYER VR</h2>
-                <p>Experiência multimídia em realidade virtual</p>
-            </div>
-            <i class="fas fa-vr-cardboard action-icon"></i>
-            <div class="scan-effect-red"></div>
-        </a>
-
-        <a href="https://yancaue.me/PROJETO-DENTISTA/" target="_blank" class="card dream-action glow-cyan">
-            <div class="action-content">
-                <h2>PROJETO DENTISTA</h2>
-                <p>Landing page profissional para clínica</p>
-            </div>
-            <i class="fas fa-tooth action-icon"></i>
-            <div class="scan-effect-cyan"></div>
-        </a>
-
-        <a href="https://yancaue.me/PROJETO-INSTAGRAM/" target="_blank" class="card imenu-action glow-pink">
-            <div class="action-content">
-                <h2>PROJETO INSTAGRAM</h2>
-                <p>Layout inspirado em feed e social app</p>
-            </div>
-            <i class="fas fa-camera-retro action-icon"></i>
-            <div class="scan-effect-pink"></div>
-        </a>
-
-        <a href="#" class="card coming-soon-action glow-gray">
-            <div class="action-content">
-                <h2>EM BREVE</h2>
-                <p>Novidade em desenvolvimento</p>
-            </div>
-            <i class="fas fa-hourglass-end action-icon"></i>
-            <div class="scan-effect-gray"></div>
-        </a>
-
-        <a href="#" class="card coming-soon-action glow-gray">
-            <div class="action-content">
-                <h2>EM BREVE</h2>
-                <p>Novidade em desenvolvimento</p>
-            </div>
-            <i class="fas fa-hourglass-end action-icon"></i>
-            <div class="scan-effect-gray"></div>
-        </a>
-
-        <div class="card social-card">
-            <a href="https://wa.me/5535997209703" target="_blank" class="social-btn whatsapp glow-green" title="WhatsApp">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="https://github.com/YanzinhoCaue" target="_blank" class="social-btn github" title="GitHub">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="https://linkedin.com/in/yancaue" target="_blank" class="social-btn linkedin" title="LinkedIn">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="mailto:yancaue@krin.tech" class="social-btn email" title="E-mail">
-                <i class="fas fa-envelope"></i>
-            </a>
-        </div>
-
-    </main>
-
-    <script src="script.js"></script>
-</body>
-</html>
+// Inicia o terminal assim que carrega
+fetchGitHubActivity();
